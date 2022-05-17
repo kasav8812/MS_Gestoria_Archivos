@@ -1,0 +1,14 @@
+com\totalplay\archivos\model\FileModel.class
+com\totalplay\archivos\common\MessageException.class
+com\totalplay\archivos\model\ErrorModel.class
+com\totalplay\archivos\controller\Controller.class
+com\totalplay\archivos\jwt\BuildJwt.class
+com\totalplay\archivos\configuration\SecurityConfiguration.class
+com\totalplay\archivos\model\Archivo.class
+com\totalplay\archivos\service\FileService.class
+com\totalplay\archivos\configuration\JwtOncePerRequestFilter.class
+com\totalplay\archivos\ArquetupeApplication.class
+com\totalplay\archivos\model\ComentariosModel.class
+com\totalplay\archivos\configuration\JwtAuthenticationEntryPoint.class
+com\totalplay\archivos\dao\SelectDao.class
+com\totalplay\archivos\jwt\BuildKeys.class

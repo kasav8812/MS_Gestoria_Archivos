@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.totalplay.archivos.dao.SelectDao">
+
+	
+	
+        <insert id="setArchivo" useGeneratedKeys="true" keyProperty="req.id" keyColumn="TPGAID">
+		INSERT INTO TPG_ARCHIVO(
+                    TPGAID,
+                    NOM_ARCHIVO,
+                    TIPO_ARCHIVO,
+                    RUTA_ARCHIVO,
+                    TPGREQID,
+                    ESTATUS,
+                    FECHA_ALTA
+		    
+		)VALUES(
+		    STPGAID.NEXTVAL,
+		    #{req.nombre},
+		    #{req.tipo},
+		    #{req.ruta},
+		    #{req.idRequerimiento},
+		    1,
+		    TO_DATE(CURRENT_DATE,'YYYY-MM-DD')
+		)
+	</insert>
+        <select id="filesById" resultType="Archivo">
+            SELECT 
+                TPGAID id,
+                    NOM_ARCHIVO nombre,
+                    TIPO_ARCHIVO tipo,
+                    RUTA_ARCHIVO ruta,
+                    TPGREQID idRequerimiento,
+                    ESTATUS estatus,
+                    FECHA_ALTA fechaAlta
+                FROM TPG_ARCHIVO
+             WHERE TPGREQID=#{id}
+        </select>
+</mapper>

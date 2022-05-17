@@ -1,0 +1,24 @@
+logging:
+  file:
+    name: '"/u01/App.log"'
+  pattern:
+    console: '%d-[%-5p]{"mensaje":"%m" ,"metodo":"%t.%M", "linea":%L, "tiempo": %r}
+      %n'
+    file: '%d-[%-5p]{"mensaje":"%m" ,"metodo":"%t.%M", "linea":%L, "tiempo": %r} %n'
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.totalplay.archivos.model
+  type-handlers-package: com.totalplay.archivos.dao
+server:
+  port: 10447
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    password: 1234
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: gestoria
+  main:
+    banner-mode: 'off'
+  mvc:
+    servlet:
+      path: /totalplay/gestoria-archivos/v1
