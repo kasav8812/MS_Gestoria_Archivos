@@ -72,20 +72,20 @@ public class FileService {
             }
         }
         public Resource load(String filename) {
-            try {
-                Path file = root.resolve(filename);
-                Resource resource = new UrlResource(file.toUri());
+        try {
+            Path file = root.resolve(filename);
+            Resource resource = new UrlResource(file.toUri());
 
-                if(resource.exists() || resource.isReadable()){
-                    return resource;
-                }else{
-                    throw new RuntimeException("No se puede leer el archivo ");
-                }
-
-            }catch (MalformedURLException e){
-                throw new RuntimeException("Error: " + e.getMessage());
+            if(resource.exists() || resource.isReadable()){
+                return resource;
+            }else{
+                throw new RuntimeException("No se puede leer el archivo ");
             }
+
+        }catch (MalformedURLException e){
+            throw new RuntimeException("Error: " + e.getMessage());
         }
+    }
 
     
 
