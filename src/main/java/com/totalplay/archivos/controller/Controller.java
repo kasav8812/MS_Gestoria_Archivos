@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
@@ -34,6 +35,11 @@ public class Controller {
 
 	@Autowired
 	private FileService fileService;
+	
+	@PostMapping("/delete")
+	public ResponseEntity<String> borrar(@PathVariable("nombre") String nom) throws Exception {
+		return ResponseEntity.status(HttpStatus.OK).body(fileService.borrarArchivo(nom));
+	}
 	
 	@PostMapping("/upload")
         public ResponseEntity<String> uploadFiles(@RequestParam("files")MultipartFile[] files, @RequestParam("idRequerimiento") String idReq){
@@ -73,12 +79,13 @@ public class Controller {
             for(Archivo archivo: fileService.filesById(req)){
                 String url = MvcUriComponentsBuilder.fromMethodName(Controller.class, "getFile",
                       archivo.getNombre()).build().toString();
-              fileInfos.add(new FileModel(archivo.getNombre(), url));
+              fileInfos.add(new FileModel(archivo.getNombre(), url, archivo.getTipo()));
             }
             System.out.println("datos----");
             System.out.println(fileInfos);
             return ResponseEntity.status(HttpStatus.OK).body(fileInfos);
         }
+        
     @GetMapping("/files/{filename:.+}")
     public ResponseEntity<Resource> getFile(@PathVariable String filename){
         Resource file = fileService.load(filename);

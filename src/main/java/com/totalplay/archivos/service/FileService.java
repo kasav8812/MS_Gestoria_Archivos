@@ -29,11 +29,16 @@ public class FileService {
         @Autowired
         SelectDao archivoRepo;
 	
+        public String borrarArchivo(String nombre) {
+        	archivoRepo.deleteArchivo(nombre);
+        	return "Exito";
+        }
 	
         public String saveFileDb(Archivo model){
             archivoRepo.setArchivo(model);
             return "Exito";
         }
+        
         public ArrayList<Archivo> filesById(String req){
             return archivoRepo.filesById(req);
         }
@@ -61,6 +66,7 @@ public class FileService {
                 throw new RuntimeException("No se puede guardar el archivo. Error " + e.getMessage());
             }
         }
+     
         
         public Stream<Path> loadAll(){
             System.out.println(this.root);

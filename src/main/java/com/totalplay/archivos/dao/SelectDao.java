@@ -13,6 +13,7 @@ public interface SelectDao {
     
     public void setArchivo(@Param("req") Archivo req);
     public ArrayList<Archivo> filesById(@Param("id") String id);
+    public void deleteArchivo(@Param("nombre") String nombre);
 
 //	public StatsuVo getStatus();
 //	

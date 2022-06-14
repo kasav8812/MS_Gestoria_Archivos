@@ -14,11 +14,16 @@ server:
 spring:
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
-    password: 1234
-    url: jdbc:oracle:thin:@localhost:1521/xe
-    username: gestoria
+    password: 123456789
+    url: jdbc:oracle:thin:@localhost:11521/xe
+    username: chars
   main:
     banner-mode: 'off'
   mvc:
     servlet:
       path: /totalplay/gestoria-archivos/v1
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB        
+  

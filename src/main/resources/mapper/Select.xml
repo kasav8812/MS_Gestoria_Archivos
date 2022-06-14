@@ -24,6 +24,11 @@
 		    TO_DATE(CURRENT_DATE,'YYYY-MM-DD')
 		)
 	</insert>
+	
+	<delete id="deleteArchivo" >
+		DELETE FROM TPG_ARCHIVO
+		WHERE NOM_ARCHIVO = #{nombre};
+	</delete>
         <select id="filesById" resultType="Archivo">
             SELECT 
                 TPGAID id,
